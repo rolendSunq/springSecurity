@@ -17,21 +17,8 @@
 
 	<sec:authentication-manager alias="authenticationManager">
 		<sec:authentication-provider>
-			<jdbc-user-service data-source-ref="dataSource"/>
+			<sec:jdbc-user-service data-source-ref="dataSource"/>
 		</sec:authentication-provider>
 	</sec:authentication-manager>
 
-	<jdbc:embedded-database id="dataSource" type="HSQL">
-		<jdbc:script location="classpath:security-schema.sql"/>
-		<!-- Ch 4 Start -->
-		<jdbc:script location="classpath:test-data.sql"/>
-		 <!--  Ch 4 Remember Me Persistence -->
-		<!--
-		 <jdbc:script location="classpath:remember-me-schema.sql"/>
-		 -->
-		<!-- Ch 4 Group Authentication Exercise -->
-		<!--
-		<jdbc:script location="classpath:test-users-groups-data.sql"/>
-		 -->
-	</jdbc:embedded-database>
 </beans>

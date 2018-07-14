@@ -20,7 +20,7 @@ public class AccountController extends BaseController {
 	@Autowired
 	private UserDetailsManager userDetailsManager;
 
-	@RequestMapping("/account/home")
+	@RequestMapping(value = "/account/home", method = RequestMethod.GET)
 	public void accountHome() {
 	}
 
@@ -30,7 +30,7 @@ public class AccountController extends BaseController {
 
 
 	/* Ch 4 UserDetailsManager version */
-	@RequestMapping(value="/account/changePassword", method = RequestMethod.POST)
+	@RequestMapping(value = "/account/changePassword", method = RequestMethod.POST)
 	public String submitChangePasswordPage(@RequestParam("oldpassword") String oldPassword, @RequestParam("password") String newPassword) {
 		userDetailsManager.changePassword(oldPassword, newPassword);
 		SecurityContextHolder.clearContext();

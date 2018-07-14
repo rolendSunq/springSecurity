@@ -10,9 +10,20 @@
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<sec:http auto-config="true" use-expressions="true">
+		<sec:csrf disabled="true"/>
 		<sec:intercept-url pattern="/login" access="permitAll"/>
+		<sec:intercept-url pattern="/home" access="hasRole('ROLE_USER')"/>
 		<sec:intercept-url pattern="/*" access="hasRole('ROLE_USER')"/>
-		<sec:form-login login-page="/login"/>
+		<sec:intercept-url pattern="/logout" access="permitAll" />
+		<sec:access-denied-handler error-page="/403" />
+
+        <sec:form-login login-page="/login" login-processing-url="/j_spring_security_check"
+            default-target-url="/home" always-use-default-target="false"
+            authentication-failure-url="/login?error=true" username-parameter="username"
+            password-parameter="password" />
+
+        <sec:logout logout-url="/logout" logout-success-url="/logoutSuccessful"
+            delete-cookies="JSESSIONID" invalidate-session="true" />
 	</sec:http>
 
 	<sec:authentication-manager alias="authenticationManager">

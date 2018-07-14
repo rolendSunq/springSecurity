@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div id="header">
                 <ul>
-                	<c:url value="/" var="homeUrl"/>
+                	<c:url value="/home" var="homeUrl"/>
                 	<li><a href="${homeUrl}">Home</a></li>
                 	<c:url value="/logout" var="logoutUrl"/>
                 	<li><a href="${logoutUrl}">Log Out</a></li>

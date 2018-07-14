@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class LoginLogoutController extends BaseController{
-	@RequestMapping(method=RequestMethod.GET,value="/login")
-	public void home() {
+
+	@RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
+	public String moveLoginPageCTRL() {
+
+		return "login";
 	}
+
 }

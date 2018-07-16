@@ -9,7 +9,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
  *
  * @author Mularien
  */
-public class InMemoryChangePasswordDaoImpl extends InMemoryUserDetailsManager implements IChangePassword {
+public class InMemoryChangePasswordDaoImpl extends InMemoryUserDetailsManager implements ChangePassword {
 	/* (non-Javadoc)
 	 * @see com.packtpub.springsecurity.security.IChangePassword#changePassword(java.lang.String, java.lang.String)
 	 */

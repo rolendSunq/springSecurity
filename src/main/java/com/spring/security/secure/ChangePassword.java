@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  *
  * @author Mularien
  */
-public interface IChangePassword extends UserDetailsService {
+public interface ChangePassword extends UserDetailsService {
 
 	/**
 	 * Changes the user's password. Note that a secure implementation would require

@@ -18,4 +18,8 @@ public class LoginLogoutController extends BaseController{
 		return "login";
 	}
 
+	@RequestMapping(value = "/logoutSuccessful")
+	public String logoutSuccessfulCTRL() {
+		return "login";
+	}
 }

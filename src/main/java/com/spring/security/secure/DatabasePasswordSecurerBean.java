@@ -24,12 +24,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class DatabasePasswordSecurerBean extends JdbcDaoSupport {
 	private final static Logger logger = LoggerFactory.getLogger(DatabasePasswordSecurerBean.class);
 
-	@Autowired
-	private SaltSource saltSource;
-
-	@Autowired
-	private UserDetailsService userDetailsService;
-
 	public void secureDatabase() {
 		getJdbcTemplate().query("SELECT username, password FROM users", new RowCallbackHandler(){
 			@Override

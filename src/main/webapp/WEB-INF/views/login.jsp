@@ -12,11 +12,6 @@
                     </div>
             	   <input id="username" name="username" maxlength="60" type="text" class="form-control"/>
                 </div>
-            <%-- For experimentation with an alternate checkbox name
-            	<input id="_remember_me" name="_remember_me" type="checkbox" value="true"/>
-            	<label for="_remember_me">Remember Me?</label>
-            	<br>
-            --%>
             	<input id="_spring_security_remember_me" name="_spring_security_remember_me" type="checkbox" value="true"/>
             	<label for="_spring_security_remember_me">Remember Me?</label>
                 <div class="input-group mb-3">
@@ -25,6 +20,6 @@
                     </div>
             	   <input id="password" name="password" maxlength="60" type="password" class="form-control"/>
                 </div>
-            	<input type="submit" value="Login"/>
+            	<button type="submit" class="btn btn-primary" value="Login">Login <i class="fas fa-sign-in-alt"></i></button>
             </form>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

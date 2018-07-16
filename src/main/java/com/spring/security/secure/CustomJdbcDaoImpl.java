@@ -13,6 +13,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 /**
@@ -22,23 +23,11 @@ import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
  *
  * @author Mularien
  */
-public class CustomJdbcDaoImpl extends JdbcDaoImpl implements IChangePassword {
-	// Ch 4 Password Encoder and Salt Exercise
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	@Autowired
-	private SaltSource saltSource;
+public class CustomJdbcDaoImpl extends JdbcDaoImpl implements ChangePassword {
 
 	public void changePassword(String username, String password) {
-//		getJdbcTemplate().update(
-//				"UPDATE USERS SET PASSWORD = ? WHERE USERNAME = ?",
-//				password, username);
-		// Ch 4 After password encoder and salt exercise
-		UserDetails user = loadUserByUsername(username);
-		String encodedPassword = passwordEncoder.encodePassword(password, saltSource.getSalt(user));
-		getJdbcTemplate().update(
-			"UPDATE USERS SET PASSWORD = ? WHERE USERNAME = ?",
-			encodedPassword, username);
+		String encodedPassword = new BCryptPasswordEncoder(10).encode(password);
+		getJdbcTemplate().update("UPDATE USERS SET PASSWORD = ? WHERE USERNAME = ?", encodedPassword, username);
 	}
 
 	// Ch 4 SaltedUser exercise

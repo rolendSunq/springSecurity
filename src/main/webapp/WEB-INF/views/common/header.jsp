@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="${cssUrl}">
         <link rel="stylesheet" href="<c:out value="${myContextPath}"/>/resources/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="<c:out value="${myContextPath}"/>/resources/fontawesome/css/all.css">
+        <script src="<c:out value="${myContextPath}"/>/resources/jquery/jquery-3.3.1.js"></script>
         <script src="<c:out value="${myContextPath}"/>/resources/bootstrap/js/bootstrap.min.js"></script>
         <title>JBCP Pets: ${pageTitle}</title>
     </head>

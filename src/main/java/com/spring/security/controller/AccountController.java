@@ -1,5 +1,7 @@
 package com.spring.security.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.provisioning.UserDetailsManager;
@@ -16,7 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class AccountController extends BaseController {
-
+	private final static Logger logger = LoggerFactory.getLogger(AccountController.class);
+	
 	@Autowired
 	private UserDetailsManager userDetailsManager;
 
@@ -32,9 +35,11 @@ public class AccountController extends BaseController {
 	/* Ch 4 UserDetailsManager version */
 	@RequestMapping(value = "/account/changePassword", method = RequestMethod.POST)
 	public String submitChangePasswordPage(@RequestParam("oldpassword") String oldPassword, @RequestParam("password") String newPassword) {
+		logger.info("submitChangePasswordPage Enter ====>");
+		
 		userDetailsManager.changePassword(oldPassword, newPassword);
 		SecurityContextHolder.clearContext();
 
-		return "redirect:home";
+		return "redirect:/home";
 	}
 }

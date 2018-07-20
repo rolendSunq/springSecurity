@@ -1,4 +1,4 @@
-package com.spring.security.secure;
+package com.spring.security.security;
 
 import java.util.Arrays;
 

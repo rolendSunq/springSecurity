@@ -6,15 +6,12 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
-
+	
 	<jdbc:embedded-database id="dataSource" type="HSQL">
 		<jdbc:script location="classpath:security-schema.sql"/>
 		<jdbc:script location="classpath:remember-me-schema.sql"/>
 		<jdbc:script location="classpath:test-data.sql"/>
-		<!-- Ch 4 Group Authentication Exercise -->
-		<!--
 		<jdbc:script location="classpath:test-users-groups-data.sql"/>
-		 -->
 	</jdbc:embedded-database>
 
 </beans>

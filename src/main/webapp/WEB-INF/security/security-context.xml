@@ -11,7 +11,7 @@
 
 	<sec:debug/>
 	
-	<sec:global-method-security pre-post-annotations="enabled"/>
+<!-- 	<sec:global-method-security pre-post-annotations="enabled"/> -->
 
 	<sec:http auto-config="true" use-expressions="true">
 		<sec:csrf disabled="true"/>
@@ -40,16 +40,22 @@
 	</bean>
 
 	<sec:authentication-manager alias="authenticationManager">
-		<sec:authentication-provider>
-			<sec:jdbc-user-service data-source-ref="dataSource"/>
+		<sec:authentication-provider user-service-ref="jdbcUserService">
 			<sec:password-encoder hash="bcrypt"/>
 		</sec:authentication-provider>
 	</sec:authentication-manager>
 
-	<bean class="com.spring.security.secure.DatabasePasswordSecurerBean"
-		init-method="secureDatabase"
-		depends-on="dataSource">
+	<bean class="com.spring.security.security.DatabasePasswordSecurerBean" init-method="secureDatabase" depends-on="dataSource">
 		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean id="jdbcUserService" class="com.spring.security.security.CustomJdbcDaoImpl">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="enableGroups" value="true"/>
+		<property name="enableAuthorities" value="false"/>
+		<property name="usersByUsernameQuery">
+			<value>SELECT USERNAME, PASSWORD, ENABLED FROM USERS WHERE USERNAME = ?</value>
+		</property>
 	</bean>
 	
 </beans>

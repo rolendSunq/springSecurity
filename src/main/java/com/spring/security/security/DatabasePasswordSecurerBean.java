@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.spring.security.secure;
+package com.spring.security.security;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

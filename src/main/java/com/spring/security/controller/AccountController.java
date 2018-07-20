@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.security.security.ChangePassword;
+
 
 /**
  * Used to service account requests.
@@ -21,7 +23,7 @@ public class AccountController extends BaseController {
 	private final static Logger logger = LoggerFactory.getLogger(AccountController.class);
 	
 	@Autowired
-	private UserDetailsManager userDetailsManager;
+	private ChangePassword changePassword;
 
 	@RequestMapping(value = "/account/home", method = RequestMethod.GET)
 	public void accountHome() {
@@ -37,9 +39,9 @@ public class AccountController extends BaseController {
 	public String submitChangePasswordPage(@RequestParam("oldpassword") String oldPassword, @RequestParam("password") String newPassword) {
 		logger.info("submitChangePasswordPage Enter ====>");
 		
-		userDetailsManager.changePassword(oldPassword, newPassword);
+		changePassword.changePassword(oldPassword, newPassword);
 		SecurityContextHolder.clearContext();
 
-		return "redirect:/home";
+		return "/home";
 	}
 }

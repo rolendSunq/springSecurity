@@ -1,4 +1,4 @@
-package com.spring.security.secure;
+package com.spring.security.security;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 

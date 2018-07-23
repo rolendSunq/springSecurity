@@ -7,6 +7,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
@@ -24,6 +25,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  */
 public class CustomJdbcDaoImpl extends JdbcDaoImpl implements ChangePassword {
 	private static final Logger logger = LoggerFactory.getLogger(CustomJdbcDaoImpl.class);
+	
 	@Override
 	public void changePassword(String username, String password) {
 		logger.debug("username: " + username + " password:" + password); 

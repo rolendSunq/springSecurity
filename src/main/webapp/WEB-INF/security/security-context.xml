@@ -21,7 +21,7 @@
 		<sec:intercept-url pattern="/*" access="permitAll"/>
 		<sec:intercept-url pattern="/logout" access="permitAll"/>
 		<sec:access-denied-handler error-page="/403" />
-
+		<sec:custom-filter ref="ipFilter" before="FILTER_SECURITY_INTERCEPTOR"/>
         <sec:form-login login-page="/login" login-processing-url="/j_spring_security_check"
             default-target-url="/home" always-use-default-target="false"
             authentication-failure-url="/login?error=true" username-parameter="username"
@@ -58,4 +58,12 @@
 		</property>
 	</bean>
 	
+	<bean id="ipFilter" class="com.spring.security.security.IPRoleAuthenticationFilter">
+		<property name="targetRole" value="ROLE_ADMIN"/>
+		<property name="allowedIPAddresses">
+			<list>
+				<value>127.0.0.1</value>
+			</list>
+		</property>
+	</bean>
 </beans>

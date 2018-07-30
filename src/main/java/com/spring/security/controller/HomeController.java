@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class HomeController extends BaseController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
@@ -23,7 +23,7 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String homeCTRL(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
 		Date date = new Date();

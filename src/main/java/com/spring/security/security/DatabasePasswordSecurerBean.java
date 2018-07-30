@@ -15,7 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 /**
  * Secures the database by updating user passwords.
  *
- * @author Mularien
  */
 public class DatabasePasswordSecurerBean extends JdbcDaoSupport {
 	private final static Logger logger = LoggerFactory.getLogger(DatabasePasswordSecurerBean.class);

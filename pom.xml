@@ -203,6 +203,8 @@
                     <compilerArgument>-Xlint:all</compilerArgument>
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>
+                    <debug>true</debug>
+        			<debuglevel>lines,vars,source</debuglevel>
                 </configuration>
             </plugin>
             <plugin>

@@ -1,6 +1,5 @@
 package com.spring.security.security;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
@@ -17,7 +16,6 @@ public interface ChangePassword extends UserDetailsService {
 	 * @param username the username
 	 * @param password the new password
 	 */
-	@PreAuthorize("hasRole('ROLE_USER')")
 	void changePassword(String username, String password);
 
 }
